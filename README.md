@@ -9,4 +9,4 @@
 - Run `fastqc` and `multiqc` again
 - Run `bowtie2` to map reads to the genome (generate bam files)
 - Run `picard` to remove duplicate reads
-- Run `platypus` to call snps (generate vcf file)
+- Run `platypus` to call SNPs (generate vcf file)
