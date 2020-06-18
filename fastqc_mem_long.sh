@@ -15,4 +15,4 @@
 
 module load fastqc/0.11.8
 
-for file in $(ls *${1}*gz); do fastqc -f fastq $file; done
+for file in $(ls *_${1}*gz); do fastqc -f fastq $file; done
