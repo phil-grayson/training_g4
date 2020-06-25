@@ -8,8 +8,7 @@
 #SBATCH -o trim_%j.out
 #SBATCH -e trim_%j.err
 
-#specify the name of the first pair as the first argument on the command line and the base name for the output as the second argument
-#e.g., 
+#only one variable is passed to this script, but it becomes $1 and $2 due to the fact that it contains an *
 
 module load trimmomatic-0.36
 
