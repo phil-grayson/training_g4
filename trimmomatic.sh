@@ -13,4 +13,4 @@
 
 module load trimmomatic-0.36
 
-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.36.jar PE -threads 8 $1 $2 trim_${1} unpaired_${1} trim_${2} unpaired_${2} ILLUMINACLIP:adapter.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:90
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.36.jar PE -threads 8 $1 $2 trim_${1} unpaired_${1} trim_${2} unpaired_${2} ILLUMINACLIP:adapters.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:90
