@@ -9,4 +9,4 @@
 
 module load picard/2.20.6
 
-java -Xmx4g -jar $EBROOTPICARD/picard.jar MarkDuplicates REMOVE_DUPLICATES=false VALIDATION_STRINGENCY=SILENT I=$1 I=$2 I=$3 O=no_dups_$1 M=remove_dup_metrics_$1 TAGGING_POLICY=All
+java -Xmx4g -jar $EBROOTPICARD/picard.jar MarkDuplicates REMOVE_DUPLICATES=true VALIDATION_STRINGENCY=SILENT I=$1 I=$2 I=$3 O=no_dups_$1 M=remove_dup_metrics_$1 TAGGING_POLICY=All
