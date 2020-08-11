@@ -1,0 +1,20 @@
+remove indels
+vcftools --gzvcf colin_subset_1_each_PASS.vcf.gz --stdout --recode --recode-INFO-all --remove-indels | gzip -c > trim1.vcf.gz
+#DON'T label files like I did above
+
+mv trim1.vcf.gz lampreys_no_indels.vcf.gz
+
+# Made the VCF smaller still to remove low frequency sites and then local linkage disequilibrium.
+vcftools --gzvcf lampreys_no_indels.vcf.gz --maf 0.05 --max-maf 0.95 --stdout --recode --recode-INFO-all | gzip -c > lampreys_no_indels_maf05.vcf.gz
+vcftools --gzvcf lampreys_no_indels_maf05.vcf.gz --thin 1000 --stdout --recode --recode-INFO-all | gzip -c > lampreys_no_indels_maf05_thinned1K.vcf.gz
+vcf-query -l lampreys_no_indels_maf05_thinned1K.vcf.gz
+
+# genetic diversity
+vcftools --gzvcf lampreys_no_indels_maf05_thinned1K.vcf.gz --window-pi 100000 --out lampreys_pi
+vcftools --gzvcf lampreys_no_indels_maf05_thinned1K.vcf.gz --weir-fst-pop littoral.txt --fst-window-size 100000 --out xxxx_fst
+
+# make ped
+vcftools --gzvcf lampreys_no_indels_maf05_thinned1K.vcf.gz  --plink --out lampreys_no_indels_maf05_thinned1K
+
+# make bed ... using "bedops"
+vcf2bed --snvs < lampreys_no_indels_maf05_thinned1K.vcf.gz > lampreys_no_indels_maf05_thinned1K.bed
